@@ -1,0 +1,22 @@
+<h2>My Clients</h2>
+<div>
+    <label>Client username:</label> <input #clientUsername />
+    <button (click)="add(clientUsername.value); clientUsername.value=''">
+        Add
+    </button>
+</div>
+<ul class="clients">
+    <li *ngFor="let client of clients" (click)="onSelect(client)"
+        [class.selected]="client === selectedClient">
+        <span class="badge">{{client.id}}</span>
+        <span>{{client.username}}</span>
+        <button class="delete"
+                (click)="delete(client); $event.stopPropagation()">x</button>
+    </li>
+</ul>
+<div *ngIf="selectedClient">
+    <h2>
+        {{selectedClient.username}} is my username
+    </h2>
+    <button (click)="gotoDetail()">View Details</button>
+</div>

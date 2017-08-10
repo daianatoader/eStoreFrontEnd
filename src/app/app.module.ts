@@ -15,6 +15,9 @@ import { HeroDetailComponent }  from './hero-detail.component';
 import { BrandDetailComponent }  from './brand/brand-detail.component';
 import { HeroService }          from './hero.service';
 import { HeroSearchComponent }  from './hero-search.component';
+import { ClientsComponent} from './client/clients.component';
+import { ClientDetailComponent} from './client/client-detail.component';
+import {ClientService} from './client/client.service';
 
 @NgModule({
   imports: [
@@ -30,11 +33,14 @@ import { HeroSearchComponent }  from './hero-search.component';
     BrandDetailComponent,
     HeroesComponent,
     HeroSearchComponent,
-    BrandsComponent
+    BrandsComponent,
+    ClientsComponent,
+    ClientDetailComponent
   ],
-  providers: [ 
-    HeroService,
-    BrandService ],
+  providers: [HeroService,
+    BrandService,
+    ClientService
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
