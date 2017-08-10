@@ -22,10 +22,10 @@ export class BrandsComponent implements OnInit {
         .getBrands()
         .then(brands => this.brands = brands);
   }
-  add(name: string, photoPath: string): void {
+  add(name: string): void {
     name = name.trim();
     if (!name) { return; }
-    this.brandService.create(name,photoPath)
+    this.brandService.create(name)
       .then(brand => {
         this.brands.push(brand);
         this.selectedBrand = null;
