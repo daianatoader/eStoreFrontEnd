@@ -32,8 +32,8 @@ import { HeroSearchComponent }  from './hero-search.component';
     HeroSearchComponent,
     BrandsComponent
   ],
-  providers: [ 
-    HeroService,
+  providers:
+    [ HeroService,
     BrandService ],
   bootstrap: [ AppComponent ]
 })

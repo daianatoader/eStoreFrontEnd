@@ -1,0 +1,22 @@
+<h2>My Campaigns</h2>
+<div>
+    <label>Campaign details:</label> <input #campaignDetails />
+    <button (click)="add(campaignDetails.value); campaignDetails.value=''">
+        Add
+    </button>
+</div>
+<ul class="campaigns">
+    <li *ngFor="let campaign of campaigns" (click)="onSelect(campaign)"
+        [class.selected]="campaign === selectedCampaign">
+        <span class="badge">{{campaign.id}}</span>
+        <span>{{campaign.details}}</span>
+        <button class="delete"
+                (click)="delete(campaign); $event.stopPropagation()">x</button>
+    </li>
+</ul>
+<div *ngIf="selectedCampaign">
+    <h2>
+        {{selectedCampaign.details}} is my campaign
+    </h2>
+    <button (click)="gotoDetail()">View Details</button>
+</div>
