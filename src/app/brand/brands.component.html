@@ -1,0 +1,24 @@
+<h2>BRANDS</h2>
+<div>
+  <label>Brand name:</label> <input #brandName />
+   <label>Photo:</label> 
+  <button (click)="add(brandName.value); brandName.value=''">
+    Add
+  </button>
+</div>
+<ul class="brands">
+  <li *ngFor="let brand of brands" (click)="onSelect(brand)"
+      [class.selected]="brand === selectedBrand">
+    <div style="text-align: center;">
+      <span>  {{brand.name}}</span>
+      <button class="delete"
+        (click)="delete(brand); $event.stopPropagation()">x</button>
+      </div>
+  </li>
+</ul>
+<div *ngIf="selectedBrand">
+  <h2>
+    {{selectedBrand.name | uppercase}} selected brand
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
+</div>
