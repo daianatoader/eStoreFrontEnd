@@ -14,7 +14,7 @@ import { BrandService } from './brand.service';
 })
 export class BrandDetailComponent implements OnInit {
   brand: Brand;
-    private uploadUrl = 'http://localhost:8080/update';
+  private uploadUrl = 'http://localhost:8080/update';
 
   constructor(
     private brandService: BrandService,
@@ -31,27 +31,24 @@ export class BrandDetailComponent implements OnInit {
 
   }
   upload() {
-    //locate the file element meant for the file upload.
         let inputEl: HTMLInputElement = this.el.nativeElement.querySelector('#photo');
-    //get the total amount of files attached to the file input.
         let fileCount: number = inputEl.files.length;
-    //create a new fromdata instance
         let formData = new FormData();
-    //check if the filecount is greater than zero, to be sure a file was selected.
         if (fileCount > 0) { // a file was selected
-            //append the key name 'photo' with the first file in the element
-                formData.append('photo', inputEl.files.item(0));
-            //call the angular http method
-            this.http
-        //post the form data to the url defined above and map the response. Then subscribe //to initiate the post. if you don't subscribe, angular wont post.
-                .post(this.uploadUrl, formData).map((res:Response) => res.json()).subscribe(
-                //map the success function and alert the response
-                 (success) => {
-                         alert(success._body);
-                },
-                (error) => alert(error))
+            formData.append('photo', inputEl.files.item(0));
+            this.http.post(this.uploadUrl, formData)
+            .toPromise().then(this.extractData).catch(this.handleError);
           }
        }
+
+  extractData(res: Response): void {
+    alert('image update with success');
+    alert(res.text());
+  }
+
+  handleError(): void {
+    alert('eroare');
+  }
   save(): void {
     this.brandService.update(this.brand)
       .then(() => this.goBack());
