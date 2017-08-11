@@ -12,9 +12,9 @@ import { HeroesComponent }      from './heroes.component';
 import { HeroDetailComponent }  from './hero-detail.component';
 import { HeroService }          from './hero.service';
 import { HeroSearchComponent }  from './hero-search.component';
-import { OrderService} from './Order/order.service';
-import { OrderDetailComponent} from './Order/order-detail.component';
-import { OrdersComponent} from './Order/order.component';
+import { OrderService} from './order/order.service';
+import { OrderDetailComponent} from './order/order-detail.component';
+import { OrdersComponent} from './order/order.component';
 
 @NgModule({
   imports: [

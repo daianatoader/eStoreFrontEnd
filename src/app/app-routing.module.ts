@@ -4,8 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent }   from './dashboard.component';
 import { HeroesComponent }      from './heroes.component';
 import { HeroDetailComponent }  from './hero-detail.component';
-import { OrdersComponent} from './Order/order.component';
-import { OrderDetailComponent} from './Order/order-detail.component';
+import { OrdersComponent} from './order/order.component';
+import { OrderDetailComponent} from './order/order-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/brands', pathMatch: 'full' },
