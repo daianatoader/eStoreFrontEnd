@@ -4,7 +4,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Location }                 from '@angular/common';
 
 import {CampaignService} from './campaign.service';
-import {Campaign} from './';
+import {Campaign} from './campaign';
 
 @Component({
     selector: 'product-detail',

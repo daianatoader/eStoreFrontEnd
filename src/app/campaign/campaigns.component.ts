@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router }            from '@angular/router';
 
-import { Campaign }                from './';
+import { Campaign }                from './campaign';
 import { CampaignService }         from './campaign.service';
 
 @Component({
