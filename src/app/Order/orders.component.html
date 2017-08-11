@@ -1,0 +1,22 @@
+<h2>My Orders</h2>
+<div>
+    <label>Order price:</label> <input #orderPrice />
+    <button (click)="add(orderPrice.value); orderPrice.value=''">
+        Add
+    </button>
+</div>
+<ul class="orders">
+    <li *ngFor="let order of orders" (click)="onSelect(order)"
+        [class.selected]="order === selectedOrder">
+        <span class="badge">{{order.id}}</span>
+        <span>{{order.price}}</span>
+        <button class="delete"
+                (click)="delete(order); $event.stopPropagation()">x</button>
+    </li>
+</ul>
+<div *ngIf="selectedOrder">
+    <h2>
+        {{selectedOrder.price}} is my price
+    </h2>
+    <button (click)="gotoDetail()">View Details</button>
+</div>
