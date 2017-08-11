@@ -15,6 +15,12 @@ import { HeroDetailComponent }  from './hero-detail.component';
 import { BrandDetailComponent }  from './brand/brand-detail.component';
 import { HeroService }          from './hero.service';
 import { HeroSearchComponent }  from './hero-search.component';
+import {AdminsComponent} from './admin/admin.component';
+import {AdminService} from './admin/admin.service';
+import {AdminDetailComponent} from './admin/admin-detail.component';
+import {SectionsComponent} from './section/section.component';
+import {SectionService} from './section/section.service';
+import {SectionDetailComponent} from './section/section-detail.component';
 
 @NgModule({
   imports: [
@@ -28,13 +34,20 @@ import { HeroSearchComponent }  from './hero-search.component';
     DashboardComponent,
     HeroDetailComponent,
     BrandDetailComponent,
+    AdminDetailComponent,
+    SectionDetailComponent,
     HeroesComponent,
     HeroSearchComponent,
-    BrandsComponent
+    BrandsComponent,
+    AdminsComponent,
+    SectionsComponent
   ],
-  providers: [ 
+  providers: [
     HeroService,
-    BrandService ],
+    BrandService,
+    AdminService,
+    SectionService
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
