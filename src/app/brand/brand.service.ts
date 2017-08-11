@@ -36,10 +36,9 @@ export class BrandService {
       .catch(this.handleError);
   }
 
-  create(name: string, photoPath: string): Promise<Brand> {
-    var obj = {name:name,photoPath:photoPath};
+  create(name: string): Promise<Brand> {
     return this.http
-      .post(this.brandsUrl, JSON.stringify(obj), {headers: this.headers})
+      .post(this.brandsUrl, JSON.stringify({name:name}), {headers: this.headers})
       .toPromise()
       .then(res => res.json() as Brand)
       .catch(this.handleError);
