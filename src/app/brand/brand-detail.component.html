@@ -10,6 +10,13 @@
     <label>description:</label>
     <input [(ngModel)]="brand.description" placeholder="description" />
    </div>
+    <div>
+   <input id="photo" type="file" />
+    <!-- button to trigger the file upload when submitted -->
+    <button type="button" class="btn btn-success btn-s" (click)="upload()">
+    Upload with method 2
+    </button>
+</div>
    <div>
      <h2>Brand products</h2>
      <ul class="products">
