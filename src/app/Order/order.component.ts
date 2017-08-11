@@ -25,11 +25,9 @@ export class OrdersComponent implements OnInit {
     ngOnInit(): void {
         this.getOrders();
     }
-
     onSelect(order: Order): void {
         this.selectedOrder = order;
     }
-
     gotoDetail(): void {
         this.router.navigate(['/orderDetails', this.selectedOrder.id]);
     }

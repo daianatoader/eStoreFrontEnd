@@ -19,7 +19,6 @@ export class OrderDetailComponent implements OnInit {
         private route: ActivatedRoute,
         private location: Location
     ) {}
-
     ngOnInit(): void {
         this.route.paramMap
             .switchMap((params: ParamMap) => this.orderService.getOrder(+params.get('id')))
