@@ -35,3 +35,4 @@ export class CampaignDetailComponent implements OnInit {
         this.location.back();
     }
 }
+

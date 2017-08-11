@@ -24,6 +24,12 @@ import {SectionDetailComponent} from './section/section-detail.component';
 import { ClientsComponent} from './client/clients.component';
 import { ClientDetailComponent} from './client/client-detail.component';
 import {ClientService} from './client/client.service';
+import {ProductsComponent} from './product/products.component';
+import {ProductService} from './product/product.service';
+import {ProductDetailComponent} from './product/product-detail.component';
+import {CampaignsComponent} from './campaign/campaigns.component';
+import {CampaignService} from './campaign/campaign.service';
+import {CampaignDetailComponent} from './campaign/campaign-detail.component';
 
 @NgModule({
   imports: [
@@ -40,19 +46,25 @@ import {ClientService} from './client/client.service';
     AdminDetailComponent,
     SectionDetailComponent,
     ClientDetailComponent,
+    ProductDetailComponent,
+    CampaignDetailComponent,
     HeroesComponent,
     HeroSearchComponent,
     BrandsComponent,
     AdminsComponent,
     SectionsComponent,
-    ClientsComponent
+    ClientsComponent,
+    ProductsComponent,
+    CampaignsComponent
   ],
   providers: [
     HeroService,
     BrandService,
     AdminService,
     SectionService,
-    ClientService
+    ClientService,
+    ProductService,
+    CampaignService
   ],
   bootstrap: [ AppComponent ]
 })

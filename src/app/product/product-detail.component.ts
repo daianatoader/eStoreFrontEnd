@@ -35,3 +35,4 @@ export class ProductDetailComponent implements OnInit {
         this.location.back();
     }
 }
+

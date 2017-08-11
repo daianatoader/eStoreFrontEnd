@@ -54,3 +54,4 @@ export class CampaignsComponent implements OnInit {
         this.router.navigate(['/campaignDetail', this.selectedCampaign.id]);
     }
 }
+
