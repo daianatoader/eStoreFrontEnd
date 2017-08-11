@@ -21,6 +21,9 @@ import {AdminDetailComponent} from './admin/admin-detail.component';
 import {SectionsComponent} from './section/section.component';
 import {SectionService} from './section/section.service';
 import {SectionDetailComponent} from './section/section-detail.component';
+import { ClientsComponent} from './client/clients.component';
+import { ClientDetailComponent} from './client/client-detail.component';
+import {ClientService} from './client/client.service';
 
 @NgModule({
   imports: [
@@ -36,17 +39,20 @@ import {SectionDetailComponent} from './section/section-detail.component';
     BrandDetailComponent,
     AdminDetailComponent,
     SectionDetailComponent,
+    ClientDetailComponent,
     HeroesComponent,
     HeroSearchComponent,
     BrandsComponent,
     AdminsComponent,
-    SectionsComponent
+    SectionsComponent,
+    ClientsComponent
   ],
   providers: [
     HeroService,
     BrandService,
     AdminService,
-    SectionService
+    SectionService,
+    ClientService
   ],
   bootstrap: [ AppComponent ]
 })

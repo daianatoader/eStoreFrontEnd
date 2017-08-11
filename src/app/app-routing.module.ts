@@ -10,6 +10,8 @@ import {AdminsComponent} from './admin/admin.component';
 import {AdminDetailComponent} from './admin/admin-detail.component';
 import {SectionsComponent} from './section/section.component';
 import {SectionDetailComponent} from './section/section-detail.component';
+import { ClientsComponent} from './client/clients.component';
+import { ClientDetailComponent} from './client/client-detail.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/brands', pathMatch: 'full'},
@@ -21,12 +23,13 @@ const routes: Routes = [
   {path: 'admins', component: AdminsComponent},
   {path: 'sections', component: SectionsComponent},
   {path: 'sectionDetail/:id', component: SectionDetailComponent},
-  {path: 'adminDetail/:id', component: AdminDetailComponent}
+  {path: 'adminDetail/:id', component: AdminDetailComponent},
+  { path: 'clients', component: ClientsComponent},
+  { path: 'clientDetail/:id', component: ClientDetailComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}
