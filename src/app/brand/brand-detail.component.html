@@ -1,23 +1,24 @@
 <div *ngIf="brand">
   <h2>{{brand.name}} details!</h2>
   <div>
-   <img src="{{brand.photoPath}}"/>
-  <div>
-    <label>name: </label>
-    <input [(ngModel)]="brand.name" placeholder="name" />
+    <img src="{{brand.photoPath}}"/>
+    <div>
+      <label>name: </label>
+      <input [(ngModel)]="brand.name" placeholder="name"/>
+    </div>
+    <div>
+      <label>description:</label>
+      <input [(ngModel)]="brand.description" placeholder="description"/>
+    </div>
+    <div>
+      <h2>Brand products</h2>
+      <ul class="products">
+        <li *ngFor="let product of brand.products">
+          <span class="badge">{{product.id}}</span> {{product.name}}
+        </li>
+      </ul>
+    </div>
+    <button (click)="goBack()">Back</button>
+    <button (click)="save()">Save</button>
   </div>
-  <div>
-    <label>description:</label>
-    <input [(ngModel)]="brand.description" placeholder="description" />
-   </div>
-   <div>
-     <h2>Brand products</h2>
-     <ul class="products">
-      <li *ngFor="let product of brand.products">
-        <span class="badge">{{product.id}}</span> {{product.name}}
-      </li>
-    </ul>
-   </div>
-  <button (click)="goBack()">Back</button>
-  <button (click)="save()">Save</button>
 </div>
