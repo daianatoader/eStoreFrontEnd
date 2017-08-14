@@ -1,0 +1,29 @@
+<div *ngIf="campaign">
+    <h2>{{campaign.details}} details!</h2>
+    <div>
+        <label>id: </label>{{campaign.id}}
+    </div>
+    <div>
+        <label>details: </label>
+        <input [(ngModel)]="campaign.details" placeholder="details"/>
+    </div>
+    <div>
+        <label>period: </label>
+        <input [(ngModel)]="campaign.period" placeholder="period"/>
+    </div>
+    <div>
+        <label>discount: </label>
+        <input [(ngModel)]="campaign.discount" placeholder="discount"/>
+    </div>
+    <div>
+        <ul class="products">
+            <li *ngFor="let product of campaign.products">
+                <span class="badge">{{product.id}}</span> {{product.name}}
+            </li>
+        </ul>
+    </div>
+    <div>
+        <button (click)="goBack()">Back</button>
+        <button (click)="save()">Save</button>
+    </div>
+</div>
