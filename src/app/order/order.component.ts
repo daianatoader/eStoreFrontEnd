@@ -29,6 +29,6 @@ export class OrdersComponent implements OnInit {
         this.selectedOrder = order;
     }
     gotoDetail(): void {
-        this.router.navigate(['/orderDetails', this.selectedOrder.id]);
+        this.router.navigate(['/orderDetail', this.selectedOrder.id]);
     }
 }
