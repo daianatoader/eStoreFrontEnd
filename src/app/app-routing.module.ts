@@ -16,6 +16,8 @@ import {ProductsComponent} from './product/products.component';
 import {ProductDetailComponent} from './product/product-detail.component';
 import {CampaignsComponent} from './campaign/campaigns.component';
 import {CampaignDetailComponent} from './campaign/campaign-detail.component';
+import { OrdersComponent} from './order/order.component';
+import { OrderDetailComponent} from './order/order-detail.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/brands', pathMatch: 'full'},
@@ -33,7 +35,9 @@ const routes: Routes = [
   {path: 'products', component: ProductsComponent},
   {path: 'campaigns', component: CampaignsComponent},
   {path: 'productDetail/:id', component: ProductDetailComponent},
-  {path: 'campaignDetail/:id', component: CampaignDetailComponent}
+  {path: 'campaignDetail/:id', component: CampaignDetailComponent},
+  { path: 'orderDetail/:id', component: OrderDetailComponent},
+  { path: 'orders', component: OrdersComponent}
 ];
 
 @NgModule({
@@ -41,3 +45,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
+

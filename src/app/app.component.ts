@@ -11,6 +11,7 @@ import { Component }          from '@angular/core';
       <a routerLink="/admins" routerLinkActive="active">Admin</a>
       <a routerLink="/products" routerLinkActive="active">Products</a>
       <a routerLink="/campaigns" routerLinkActive="active">Campaigns</a>
+      <a routerLink="/orders" routerLinkActive="active">Orders</a>
     </nav>
     <router-outlet></router-outlet>
   `,
@@ -19,3 +20,4 @@ import { Component }          from '@angular/core';
 export class AppComponent {
   title = 'eStore';
 }
+
