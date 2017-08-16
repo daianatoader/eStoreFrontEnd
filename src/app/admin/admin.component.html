@@ -1,0 +1,24 @@
+<h2>ADMIN</h2>
+<div>
+    <label>Admin username:</label> <input #adminUsername/>
+    <button (click)="add(adminUsername.value); adminUsername.value=''">
+        Add
+    </button>
+</div>
+<ul class="admins">
+    <li *ngFor="let admin of admins" (click)="onSelect(admin)"
+        [class.selected]="admin === selectedAdmin">
+        <div style="text-align: center;">
+            <span>{{admin.username}}</span>
+            <button class="delete"
+                    (click)="delete(admin); $event.stopPropagation()">x
+            </button>
+        </div>
+    </li>
+</ul>
+<div *ngIf="selectedAdmin">
+    <h2>
+        {{selectedAdmin.username | uppercase}} is my admin
+    </h2>
+    <button (click)="gotoDetail()">View Details</button>
+</div>

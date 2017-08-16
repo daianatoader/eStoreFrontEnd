@@ -1,0 +1,22 @@
+<div *ngIf="order">
+    <h2>{{order.price}} details!</h2>
+    <div>
+        <label>id: </label>{{order.id}}</div>
+    <div>
+        <label>price: </label>
+        <input [(ngModel)]="order.price" placeholder="price" />
+    </div>
+    <div>
+        <label>paymentMethod: </label>
+        <input [(ngModel)]="order.paymentMethod" placeholder="paymentMethod"/>
+    </div>
+    <div>
+        <label>shippingMethod: </label>
+        <input [(ngModel)]="order.shippingMethod" placeholder="shippingMethod"/>
+    </div>
+    <div>
+        <label>orderStatus: </label>
+        <input [(ngModel)]="order.orderStatus" placeholder="orderStatus"/>
+    </div>
+    <button (click)="goBack()">Back</button>
+</div>
