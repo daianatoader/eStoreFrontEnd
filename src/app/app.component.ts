@@ -12,6 +12,7 @@ import { Component }          from '@angular/core';
       <a routerLink="/products" routerLinkActive="active">Products</a>
       <a routerLink="/campaigns" routerLinkActive="active">Campaigns</a>
       <a routerLink="/orders" routerLinkActive="active">Orders</a>
+      <a routerLink="/login" routerLinkActive="active">Login</a>
     </nav>
     <router-outlet></router-outlet>
   `,

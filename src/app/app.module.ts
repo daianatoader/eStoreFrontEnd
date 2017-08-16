@@ -32,6 +32,8 @@ import {CampaignDetailComponent} from './campaign/campaign-detail.component';
 import { OrderService} from './order/order.service';
 import { OrderDetailComponent} from './order/order-detail.component';
 import { OrdersComponent} from './order/order.component';
+import {LoginComponent} from "./login/login.component";
+import {AuthenticationService} from "./login/authentication.service";
 
 @NgModule({
   imports: [
@@ -59,7 +61,8 @@ import { OrdersComponent} from './order/order.component';
     ProductsComponent,
     CampaignsComponent,
     OrdersComponent,
-    OrderDetailComponent
+    OrderDetailComponent,
+    LoginComponent
   ],
   providers: [
     HeroService,
@@ -69,7 +72,8 @@ import { OrdersComponent} from './order/order.component';
     ClientService,
     ProductService,
     CampaignService,
-    OrderService
+    OrderService,
+    AuthenticationService
   ],
   bootstrap: [ AppComponent ]
 })
