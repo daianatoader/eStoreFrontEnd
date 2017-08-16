@@ -1,7 +1,7 @@
 <div *ngIf="brand">
   <h2>{{brand.name}} details!</h2>
   <div>
-   <img src="{{brand.photoPath}}"/>
+   <img id="image" src="{{brand.photoPath}}"/>
   <div>
     <label>name: </label>
     <input [(ngModel)]="brand.name" placeholder="name" />

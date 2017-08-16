@@ -37,13 +37,12 @@ export class BrandDetailComponent implements OnInit {
         if (fileCount > 0) { // a file was selected
             formData.append('photo', inputEl.files.item(0));
             this.http.post(this.uploadUrl, formData)
-            .toPromise().then(this.extractData).catch(this.handleError);
+            .toPromise().then(this.informUser).catch(this.handleError);
           }
        }
 
-  extractData(res: Response): void {
-    alert('image update with success');
-    alert(res.text());
+  informUser(res: Response): void {
+    alert('image ' + res.text() + ' successfully uploaded');
   }
 
   handleError(): void {
