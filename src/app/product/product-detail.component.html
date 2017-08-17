@@ -1,8 +1,9 @@
 <div *ngIf="product">
     <h2>{{product.name}} details!</h2>
-    <div>
-        <label>id: </label>{{product.id}}
-    </div>
+
+ <div>
+   <img id="image" src="{{product.photoPath}}"/>
+  <div>
     <div>
         <label>name: </label>
         <input [(ngModel)]="product.name" placeholder="name"/>
@@ -14,6 +15,13 @@
     <div>
         <label>price: </label>
         <input [(ngModel)]="product.price" placeholder="price"/>
+    </div>
+    <div>
+        <input id="photo" type="file" />
+            <!-- button to trigger the file upload when submitted -->
+        <button type="button" class="btn btn-success btn-s" (click)="upload()">
+            Upload
+        </button>
     </div>
     <div>
         <button (click)="goBack()">Back</button>
