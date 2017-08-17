@@ -1,10 +1,10 @@
 import 'rxjs/add/operator/switchMap';
-import { Component, OnInit }        from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Location }                 from '@angular/common';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, ParamMap} from '@angular/router';
+import {Location} from '@angular/common';
 
-import { Order }        from './order';
-import { OrderService } from './order.service';
+import {Order} from './order';
+import {OrderService} from './order.service';
 
 @Component({
     selector: 'order-detail',
@@ -24,7 +24,17 @@ export class OrderDetailComponent implements OnInit {
             .switchMap((params: ParamMap) => this.orderService.getOrder(+params.get('id')))
             .subscribe(order => this.order = order);
     }
-    goBack(): void {
-        this.location.back();
-    }
+
+  goBack(): void {
+    this.location.back();
+  }
+
+  cancelOrder(): void {
+    if (this.order.orderStatus === 'OPEN' || this.order.orderStatus === 'SHIPPED') {
+        this.orderService.update(this.order.id)
+          .then(() => this.goBack());
+      } else {
+        alert('This order can not be canceled!!');
+      }
+  }
 }
