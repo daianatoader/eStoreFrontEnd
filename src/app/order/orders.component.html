@@ -1,10 +1,4 @@
-<h2>My Orders</h2>
-<div>
-    <label>Order price:</label> <input #orderPrice />
-    <button (click)="add(orderPrice.value); orderPrice.value=''">
-        Add
-    </button>
-</div>
+<h2>ORDERS</h2>
 <ul class="orders">
     <li *ngFor="let order of orders" (click)="onSelect(order)"
         [class.selected]="order === selectedOrder">
@@ -20,3 +14,4 @@
     </h2>
     <button (click)="gotoDetail()">View Details</button>
 </div>
+
