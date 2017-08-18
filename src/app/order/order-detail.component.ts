@@ -30,7 +30,7 @@ export class OrderDetailComponent implements OnInit {
   }
 
   cancelOrder(): void {
-    if (this.order.orderStatus === 'OPEN' || this.order.orderStatus === 'SHIPPED') {
+    if (this.order.orderStatus === 'OPEN' || this.order.orderStatus === 'WAITING') {
         this.orderService.update(this.order.id)
           .then(() => this.goBack());
       } else {
