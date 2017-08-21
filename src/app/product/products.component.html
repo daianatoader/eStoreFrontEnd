@@ -8,11 +8,11 @@
 <ul class="products">
   <li *ngFor="let product of products" (click)="onSelect(product)"
       [class.selected]="product === selectedProduct">
-    <span class="badge">{{product.id}}</span>
-    <span>{{product.name}}</span>
+    <span class="badge">{{product.name}}</span>
     <button class="delete"
             (click)="delete(product); $event.stopPropagation()">x
     </button>
+    <button (click)="addToCart(client,product)">AddToCart</button>
   </li>
 </ul>
 <div *ngIf="selectedProduct">

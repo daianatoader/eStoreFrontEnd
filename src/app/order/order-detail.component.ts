@@ -31,7 +31,8 @@ export class OrderDetailComponent implements OnInit {
 
   cancelOrder(): void {
     if (this.order.orderStatus === 'OPEN' || this.order.orderStatus === 'WAITING') {
-        this.orderService.update(this.order.id)
+        this.order.orderStatus='CANCELED';
+        this.orderService.update(this.order)
           .then(() => this.goBack());
       } else {
         alert('This order can not be canceled!!');
