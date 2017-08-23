@@ -2,17 +2,22 @@ import {Injectable} from '@angular/core';
 import {Headers, Http} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import {Section} from './section';
+import {AuthenticationService} from '../login/authentication.service';
 
 @Injectable()
 export class SectionService {
-    private headers = new Headers({'Content-Type': 'application/json'});
     private sectionsUrl = 'http://localhost:8080/sections';  // URL to web api
 
-    constructor(private http: Http) {
-    }
+    private headers = new Headers({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.authenticationService.getToken()
+      });
+    constructor(private http: Http,
+                private authenticationService: AuthenticationService) { }
+
 
     getSections(): Promise<Section[]> {
-        return this.http.get(this.sectionsUrl)
+        return this.http.get(this.sectionsUrl, {headers: this.headers})
             .toPromise()
             .then(response => response.json() as Section[])
             .catch(this.handleError);
@@ -21,7 +26,7 @@ export class SectionService {
 
     getSection(id: number): Promise<Section> {
         const url = `${this.sectionsUrl}/${id}`;
-        return this.http.get(url)
+        return this.http.get(url, {headers: this.headers})
             .toPromise()
             .then(response => response.json() as Section)
             .catch(this.handleError);

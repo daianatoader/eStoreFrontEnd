@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
       .subscribe(result => {
         if (result === true) {
           // login successful
-          this.router.navigate(['home']);
+          this.router.navigate(['brands']);
         } else {
           // login failed
           this.error = 'Username or password is incorrect';
@@ -39,5 +39,9 @@ export class LoginComponent implements OnInit {
         this.loading = false;
         this.error = error;
       });
+  }
+
+  changePage(): void {
+    this.router.navigate(['newAccount']);
   }
 }

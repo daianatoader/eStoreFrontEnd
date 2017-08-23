@@ -1,8 +1,12 @@
+
+import {Product} from '../product/product'
+import {User} from '../user/user'
 export class Order {
     id: number;
     price: string;
     paymentMethod: string;
     shippingMethod: string;
     orderStatus: string;
-    client_id: number;
+    user: User;
+    products: Product[];
 }

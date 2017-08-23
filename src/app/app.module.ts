@@ -14,15 +14,9 @@ import { HeroDetailComponent }  from './hero-detail.component';
 import { BrandDetailComponent }  from './brand/brand-detail.component';
 import { HeroService }          from './hero.service';
 import { HeroSearchComponent }  from './hero-search.component';
-import {AdminsComponent} from './admin/admin.component';
-import {AdminService} from './admin/admin.service';
-import {AdminDetailComponent} from './admin/admin-detail.component';
 import {SectionsComponent} from './section/section.component';
 import {SectionService} from './section/section.service';
 import {SectionDetailComponent} from './section/section-detail.component';
-import { ClientsComponent} from './client/clients.component';
-import { ClientDetailComponent} from './client/client-detail.component';
-import {ClientService} from './client/client.service';
 import {ProductsComponent} from './product/products.component';
 import {ProductService} from './product/product.service';
 import {ProductDetailComponent} from './product/product-detail.component';
@@ -32,8 +26,9 @@ import {CampaignDetailComponent} from './campaign/campaign-detail.component';
 import { OrderService} from './order/order.service';
 import { OrderDetailComponent} from './order/order-detail.component';
 import { OrdersComponent} from './order/order.component';
-import {LoginComponent} from "./login/login.component";
-import {AuthenticationService} from "./login/authentication.service";
+import {LoginComponent} from './login/login.component';
+import {NewAccountComponent} from './login/new-account.component';
+import {AuthenticationService} from './login/authentication.service';
 
 @NgModule({
   imports: [
@@ -47,29 +42,24 @@ import {AuthenticationService} from "./login/authentication.service";
     DashboardComponent,
     HeroDetailComponent,
     BrandDetailComponent,
-    AdminDetailComponent,
     SectionDetailComponent,
-    ClientDetailComponent,
     ProductDetailComponent,
     CampaignDetailComponent,
     HeroesComponent,
     HeroSearchComponent,
     BrandsComponent,
-    AdminsComponent,
     SectionsComponent,
-    ClientsComponent,
     ProductsComponent,
     CampaignsComponent,
     OrdersComponent,
     OrderDetailComponent,
-    LoginComponent
+    LoginComponent,
+    NewAccountComponent
   ],
   providers: [
     HeroService,
     BrandService,
-    AdminService,
     SectionService,
-    ClientService,
     ProductService,
     CampaignService,
     OrderService,

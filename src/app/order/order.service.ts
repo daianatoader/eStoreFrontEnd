@@ -3,23 +3,28 @@ import { Injectable }    from '@angular/core';
 import 'rxjs/add/operator/toPromise';
 
 import { Order } from './order';
-import {Http} from '@angular/http';
+import {AuthenticationService} from '../login/authentication.service';
+import {Http,Headers} from '@angular/http';
 
 @Injectable()
 export class OrderService {
   private ordersUrl = 'http://localhost:8080/orders';  // URL to web api // URL to web api
-
-    constructor(private http: Http) { }
+  private headers = new Headers({
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer ' + this.authenticationService.getToken()
+  });
+    constructor(private http: Http,
+                private authenticationService: AuthenticationService) { }
 
     getOrders(): Promise<Order[]> {
-        return this.http.get(this.ordersUrl)
+        return this.http.get(this.ordersUrl, {headers: this.headers})
             .toPromise()
             .then(response => response.json() as Order[])
             .catch(this.handleError);
     }
     getOrder(id: number): Promise<Order> {
         const url = `${this.ordersUrl}/${id}`;
-        return this.http.get(url)
+        return this.http.get(url, {headers: this.headers})
             .toPromise()
             .then(response => response.json() as Order)
             .catch(this.handleError);
