@@ -2,10 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
 import {Product} from './product';
-import {Client} from '../client/client';
+import {User} from '../user/user';
 import {Order} from '../order/order';
 import {ProductService} from './product.service';
-import {ClientService} from '../client/client.service';
+import {UserService} from '../user/user.service';
 import {OrderService} from '../order/order.service';
 
 @Component({
@@ -18,14 +18,14 @@ export class ProductsComponent implements OnInit {
     selectedProduct: Product;
     order:Order;
     orders:Order[];
-    client: Client;
+    user: User;
 
     constructor(private productService: ProductService,
-                private clientService: ClientService,
+                private userService: UserService,
                 private orderService: OrderService,
                 private router: Router) {
-                    orderService.getOrders().then(o => this.orders = o);   
-                    clientService.getClient(1).then(c=>this.client=c);        
+                    orderService.getOrders().then(o => this.orders = o);
+                    userService.getUser(1).then(c=>this.user=c);
     }
 
     getProducts(): void {
@@ -57,17 +57,17 @@ export class ProductsComponent implements OnInit {
             });
     }
 
-    addToCart(client: Client,product: Product): void {
-        client=this.client;
-        var clientOrder = this.orders.find(function(el){
-            return el.client.id===client.id &&
+    addToCart(user: User ,product: Product): void {
+        user=this.user;
+        var userOrder = this.orders.find(function(el){
+            return el.user.id===user.id &&
             el.orderStatus==='OPEN';
         });
 
-        if(clientOrder!=undefined){//UPDATE COMANDA
-            clientOrder.products.push(product);
-            clientOrder.price+=product.price;
-            this.orderService.update(clientOrder);
+        if(userOrder!=undefined){//UPDATE COMANDA
+            userOrder.products.push(product);
+            userOrder.price+=product.price;
+            this.orderService.update(userOrder);
         }
         else{//CREARE COMANDA DACA NU EXISTA O COMANDA CU STATUS-UL OPEN
             var order= new Order();
@@ -75,7 +75,7 @@ export class ProductsComponent implements OnInit {
             order.price=0;
             order.price+=product.price;
             order.orderStatus='OPEN';
-            order.client=client;
+            order.user=user;
             console.log(order.products);
             console.log(product);
             order.products.push(product);

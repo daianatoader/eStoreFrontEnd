@@ -4,17 +4,24 @@ import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { Campaign } from './campaign';
+import {AuthenticationService} from "../login/authentication.service";
 
 @Injectable()
 export class CampaignService {
 
-    private headers = new Headers({'Content-Type': 'application/json'});
-    private campaignsUrl = 'http://localhost:8080/campaigns';  // URL to web api
+  private campaignsUrl = 'http://localhost:8080/campaigns';  // URL to web api
+  private headers = new Headers({
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer ' + this.authenticationService.getToken()
+  });
 
-    constructor(private http: Http) { }
+  constructor(private http: Http,
+              private authenticationService: AuthenticationService) {
+  }
+
 
     getCampaigns(): Promise<Campaign[]> {
-        return this.http.get(this.campaignsUrl)
+      return this.http.get(this.campaignsUrl, {headers: this.headers})
             .toPromise()
             .then(response => response.json() as Campaign[])
             .catch(this.handleError);
@@ -23,7 +30,7 @@ export class CampaignService {
 
     getCampaign(id: number): Promise<Campaign> {
         const url = `${this.campaignsUrl}/${id}`;
-        return this.http.get(url)
+      return this.http.get(url, {headers: this.headers})
             .toPromise()
             .then(response => response.json() as Campaign)
             .catch(this.handleError);

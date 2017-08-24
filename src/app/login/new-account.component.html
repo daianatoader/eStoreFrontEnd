@@ -10,7 +10,7 @@
         <input type="password" class="form-control" name="password" [(ngModel)]="user.password" #password="ngModel" required />
     </div>
     <div class="form__group">
-        <label>Fist name</label>
+        <label>First name</label>
         <input type="text" class="form-control" name="firstName" [(ngModel)]="user.firstName" #firstName="ngModel" required />
     </div>
     <div class="form__group">
@@ -31,8 +31,8 @@
     </div>
     <div class="form__group">
         <label>Card number</label>
-        <input type="text" class="form-control" name="cardNumber" [(ngModel)]="user.cardNumber" #cardNumber="ngModel" required />
-    </div>   
-    </form>     
+        <input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="form-control" name="cardNumber" [(ngModel)]="user.cardNumber" #cardNumber="ngModel" required />
+    </div>
+    </form>
     <button (click)="createAccount()" class="btn btn-primary">Create a new account</button>
 </div>

@@ -17,7 +17,7 @@ export class OrderService {
                 private authenticationService: AuthenticationService) { }
 
   getOrders(): Promise<Order[]> {
-    return this.http.get(this.ordersUrl)
+    return this.http.get(this.ordersUrl, {headers: this.headers})
       .toPromise()
       .then(response => response.json() as Order[])
       .catch(this.handleError);
@@ -25,7 +25,7 @@ export class OrderService {
 
   getOrder(id: number): Promise<Order> {
     const url = `${this.ordersUrl}/${id}`;
-    return this.http.get(url)
+    return this.http.get(url, {headers: this.headers})
       .toPromise()
       .then(response => response.json() as Order)
       .catch(this.handleError);

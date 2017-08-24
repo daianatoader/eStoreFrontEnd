@@ -29,6 +29,7 @@ import { OrdersComponent} from './order/order.component';
 import {LoginComponent} from './login/login.component';
 import {NewAccountComponent} from './login/new-account.component';
 import {AuthenticationService} from './login/authentication.service';
+import {UserService} from "./user/user.service";
 
 @NgModule({
   imports: [
@@ -63,7 +64,8 @@ import {AuthenticationService} from './login/authentication.service';
     ProductService,
     CampaignService,
     OrderService,
-    AuthenticationService
+    AuthenticationService,
+    UserService
   ],
   bootstrap: [ AppComponent ]
 })

@@ -5,7 +5,7 @@ import { Component }          from '@angular/core';
   template: `
     <h1><img src="app/nttdata.png" align="middle"></h1>
     <nav>
-      <a routerLink="/brands" routerLinkActive="active">Brands</a>
+      <a routerLink="/brands" routerLinkActive="active" >Brands</a>
       <a routerLink="/sections" routerLinkActive="active">Section</a>
       <a routerLink="/products" routerLinkActive="active">Products</a>
       <a routerLink="/campaigns" routerLinkActive="active">Campaigns</a>
