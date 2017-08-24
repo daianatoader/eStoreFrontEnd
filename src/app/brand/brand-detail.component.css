@@ -28,6 +28,6 @@ button:disabled {
   cursor: auto;
 }
 #image {
-  width: 500px;
-  height: 500px;
+  max-width: 500px;
+  max-height: 500px;
 }
