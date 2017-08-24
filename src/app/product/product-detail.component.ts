@@ -51,7 +51,7 @@ export class ProductDetailComponent implements OnInit {
 
     save(): void {
         this.productService.update(this.product)
-            .then(() => this.goBack());
+           // .then(() => this.route.component);
     }
 
     goBack(): void {

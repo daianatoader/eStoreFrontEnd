@@ -3,20 +3,15 @@
     <div>
         <label>id: </label>{{order.id}}</div>
     <div>
-        <label>price: </label>
-        <input [(ngModel)]="order.price" placeholder="price" />
-    </div>
+      <label>price: </label>{{order.price}}</div>
     <div>
-        <label>paymentMethod: </label>
-        <input [(ngModel)]="order.paymentMethod" placeholder="paymentMethod"/>
-    </div>
+      <label>paymentMethod: </label>{{order.paymentMethod}}</div>
     <div>
-        <label>shippingMethod: </label>
-        <input [(ngModel)]="order.shippingMethod" placeholder="shippingMethod"/>
-    </div>
+      <label>shippingMethod: </label>{{order.shippingMethod}}</div>
     <div>
-        <label>orderStatus: </label>
-        <input [(ngModel)]="order.orderStatus" placeholder="orderStatus"/>
-    </div>
+      <label>orderStatus: </label>{{order.orderStatus}}</div>
+    <h1><img src="app/order/clearshoppingcart.png" align="left"></h1>
+    <button (click)="cancelOrder()">Cancel order</button>
     <button (click)="goBack()">Back</button>
 </div>
+
