@@ -18,7 +18,7 @@ import { LoginComponent} from './login/login.component';
 import {NewAccountComponent} from './login/new-account.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/brands', pathMatch: 'full'},
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'detail/:id', component: HeroDetailComponent},
   {path: 'brandDetail/:id', component: BrandDetailComponent},
