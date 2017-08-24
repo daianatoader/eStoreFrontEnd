@@ -1,4 +1,4 @@
-import { Injectable }    from '@angular/core';
+import {Injectable} from '@angular/core';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -16,21 +16,39 @@ export class OrderService {
     constructor(private http: Http,
                 private authenticationService: AuthenticationService) { }
 
-    getOrders(): Promise<Order[]> {
-        return this.http.get(this.ordersUrl, {headers: this.headers})
-            .toPromise()
-            .then(response => response.json() as Order[])
-            .catch(this.handleError);
-    }
-    getOrder(id: number): Promise<Order> {
-        const url = `${this.ordersUrl}/${id}`;
-        return this.http.get(url, {headers: this.headers})
-            .toPromise()
-            .then(response => response.json() as Order)
-            .catch(this.handleError);
-    }
-    private handleError(error: any): Promise<any> {
-        console.error('An error occurred', error); // for demo purposes only
-        return Promise.reject(error.message || error);
-    }
+  getOrders(): Promise<Order[]> {
+    return this.http.get(this.ordersUrl)
+      .toPromise()
+      .then(response => response.json() as Order[])
+      .catch(this.handleError);
+  }
+
+  getOrder(id: number): Promise<Order> {
+    const url = `${this.ordersUrl}/${id}`;
+    return this.http.get(url)
+      .toPromise()
+      .then(response => response.json() as Order)
+      .catch(this.handleError);
+  }
+
+  create(order: Order): Promise<Order> {
+    return this.http
+        .post(this.ordersUrl, JSON.stringify(order), {headers: this.headers})
+        .toPromise()
+        .then(res => res.json() as Order)
+        .catch(this.handleError);
+}
+  update(order: Order): Promise<Order> {
+    const url = `${this.ordersUrl}/${order.id}`;
+    return this.http
+        .put(url, JSON.stringify(order), {headers: this.headers})
+        .toPromise()
+        .then(() => order)
+        .catch(this.handleError);
+}
+
+  private handleError(error: any): Promise<any> {
+    console.error('An error occurred', error); // for demo purposes only
+    return Promise.reject(error.message || error);
+  }
 }

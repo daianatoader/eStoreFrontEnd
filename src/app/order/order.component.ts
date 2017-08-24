@@ -32,3 +32,4 @@ export class OrdersComponent implements OnInit {
         this.router.navigate(['/orderDetail', this.selectedOrder.id]);
     }
 }
+
