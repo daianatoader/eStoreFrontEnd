@@ -3,6 +3,7 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 
 import {Order} from './order';
 import {OrderService} from './order.service';
+import {Product} from "../product/product";
 
 
 @Component({
@@ -11,25 +12,23 @@ import {OrderService} from './order.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  order: Order;
-  selectedOrder: Order;
+  orders: Order[];
+  selectedProduct: Product;
 
   constructor(private orderService: OrderService,
               private route: ActivatedRoute,
               private router: Router) {
-    this.route.paramMap
-      .switchMap((params: ParamMap) => this.orderService.getOrder(1))
-      .subscribe(o => this.order = o);
-    console.log(this.order);
+    this.orders = [];
+   orderService.getOpenOrderForClient(1).then(order => this.orders.push(order));
   }
 
   ngOnInit(): void {}
 
-  onSelect(order: Order): void {
-    this.selectedOrder = order;
+  onSelect(product: Product): void {
+    this.selectedProduct = product;
   }
 
   gotoDetail(): void {
-    this.router.navigate(['/orderDetail', this.selectedOrder.id]);
+    // this.router.navigate(['/productDetail', this.selectedProduct.id]);
   }
 }

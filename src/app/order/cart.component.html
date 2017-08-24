@@ -1,8 +1,15 @@
 <h2>SHOPPING CART</h2>
-<b>order iz {{order.price}}</b>
-<!--<ul class="orders">
+<!--<b>order iz {{order.price}}</b>-->
+<ul class="orders">
   <li *ngFor="let order of orders">
-    <span class="badge">{{order.id}}</span>
-    <span>{{order.price}}</span>
+    <ul class="cart">
+       <li *ngFor="let product of order.products" (click)="onSelect(product)"
+           [class.selected]="product === selectedProduct">
+       <span class="badge">{{product.id}}</span>
+        <span>{{product.name}}</span>
+         <button class="delete"
+                 (click)="delete(product); $event.stopPropagation()">x</button>
+      </li>
+      </ul>
   </li>
-</ul>-->
+</ul>
