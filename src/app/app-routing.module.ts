@@ -18,6 +18,7 @@ import {CampaignsComponent} from './campaign/campaigns.component';
 import {CampaignDetailComponent} from './campaign/campaign-detail.component';
 import { OrdersComponent} from './order/order.component';
 import { OrderDetailComponent} from './order/order-detail.component';
+import { ShoppingCartComponent} from './order/shoppingCart.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/brands', pathMatch: 'full'},
@@ -37,7 +38,8 @@ const routes: Routes = [
   {path: 'productDetail/:id', component: ProductDetailComponent},
   {path: 'campaignDetail/:id', component: CampaignDetailComponent},
   { path: 'orderDetail/:id', component: OrderDetailComponent},
-  { path: 'orders', component: OrdersComponent}
+  { path: 'orders', component: OrdersComponent},
+  { path: 'cart', component: ShoppingCartComponent}
 ];
 
 @NgModule({
@@ -45,4 +47,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
+
 

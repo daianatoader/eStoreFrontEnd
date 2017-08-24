@@ -9,6 +9,7 @@ import {Http, Headers} from '@angular/http';
 export class OrderService {
   private headers = new Headers({'Content-Type': 'application/json'});
   private ordersUrl = 'http://localhost:8080/orders';  // URL to web api // URL to web api
+  private cartUrl = 'http://localhost:8080/cart';  // URL to web api // URL to web api
 
   constructor(private http: Http) {
   }
@@ -22,6 +23,14 @@ export class OrderService {
 
   getOrder(id: number): Promise<Order> {
     const url = `${this.ordersUrl}/${id}`;
+    return this.http.get(url)
+      .toPromise()
+      .then(response => response.json() as Order)
+      .catch(this.handleError);
+  }
+
+  getOpenOrderForClient(id: number): Promise<Order> {
+    const url = `${this.cartUrl}/${id}`;
     return this.http.get(url)
       .toPromise()
       .then(response => response.json() as Order)
