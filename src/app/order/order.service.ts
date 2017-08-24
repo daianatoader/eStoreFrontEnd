@@ -28,14 +28,21 @@ export class OrderService {
       .catch(this.handleError);
   }
 
-  update(id: number): Promise<Order> {
-    const url = `${this.ordersUrl}/${id}`;
+  create(order: Order): Promise<Order> {
     return this.http
-      .put(url, {headers: this.headers})
-      .toPromise()
-      .then(() => this.getOrder(id))
-      .catch(this.handleError);
-  }
+        .post(this.ordersUrl, JSON.stringify(order), {headers: this.headers})
+        .toPromise()
+        .then(res => res.json() as Order)
+        .catch(this.handleError);
+}
+  update(order: Order): Promise<Order> {
+    const url = `${this.ordersUrl}/${order.id}`;
+    return this.http
+        .put(url, JSON.stringify(order), {headers: this.headers})
+        .toPromise()
+        .then(() => order)
+        .catch(this.handleError);
+}
 
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only
