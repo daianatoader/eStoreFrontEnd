@@ -33,7 +33,7 @@ import {CampaignDetailComponent} from './campaign/campaign-detail.component';
 import { OrderService} from './order/order.service';
 import { OrderDetailComponent} from './order/order-detail.component';
 import { OrdersComponent} from './order/order.component';
-import {ShoppingCartComponent} from './order/shoppingCart.component';
+import {CartComponent} from './order/cart.component';
 
 @NgModule({
   imports: [
@@ -62,7 +62,7 @@ import {ShoppingCartComponent} from './order/shoppingCart.component';
     CampaignsComponent,
     OrdersComponent,
     OrderDetailComponent,
-    ShoppingCartComponent
+    CartComponent
   ],
   providers: [
     HeroService,

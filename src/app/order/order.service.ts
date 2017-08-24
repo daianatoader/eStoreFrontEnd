@@ -31,6 +31,8 @@ export class OrderService {
 
   getOpenOrderForClient(id: number): Promise<Order> {
     const url = `${this.cartUrl}/${id}`;
+    console.log('ajunge aici');
+    console.log(url);
     return this.http.get(url)
       .toPromise()
       .then(response => response.json() as Order)

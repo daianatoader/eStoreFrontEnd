@@ -1,33 +1,29 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 
 import {Order} from './order';
 import {OrderService} from './order.service';
 
 
 @Component({
-  selector: 'my-orders',
-  templateUrl: './shoppingCart.component.html',
-  styleUrls: ['./shoppingCart.component.css']
+  selector: 'my-cart',
+  templateUrl: './cart.component.html',
+  styleUrls: ['./cart.component.css']
 })
-export class ShoppingCartComponent implements OnInit {
+export class CartComponent implements OnInit {
   order: Order;
   selectedOrder: Order;
 
   constructor(private orderService: OrderService,
+              private route: ActivatedRoute,
               private router: Router) {
+    this.route.paramMap
+      .switchMap((params: ParamMap) => this.orderService.getOrder(1))
+      .subscribe(o => this.order = o);
+    console.log(this.order);
   }
 
-  getOrders(): void {
-    this.orderService
-      .getOpenOrderForClient(1)
-      .then(order => this.order = order);
-  }
-
-  ngOnInit(): void {
-    this.getOrders();
-    console.error(this.order);
-  }
+  ngOnInit(): void {}
 
   onSelect(order: Order): void {
     this.selectedOrder = order;
