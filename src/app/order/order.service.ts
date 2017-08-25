@@ -33,7 +33,7 @@ export class OrderService {
       .catch(this.handleError);
   }
 
-  getOpenOrderForClient(id: number): Promise<Order> {
+  getOpenOrderForUser(id: number): Promise<Order> {
     const url = `${this.cartUrl}/${id}`;
     console.log(url);
     return this.http.get(url)

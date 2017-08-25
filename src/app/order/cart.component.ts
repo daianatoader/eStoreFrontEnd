@@ -25,7 +25,7 @@ export class CartComponent implements OnInit {
 
   private getOpenOrder() {
     this.orders = [];
-    this.orderService.getOpenOrderForClient(1).then(order => this.orders.push(order));
+    this.orderService.getOpenOrderForUser(1).then(order => this.orders.push(order));
   }
 
   ngOnInit(): void {}
