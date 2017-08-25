@@ -4,19 +4,24 @@ import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { Brand } from './brand'
+import {AuthenticationService} from "../login/authentication.service";
 
 @Injectable()
 export class BrandService {
 
-  private headers = new Headers({'Content-Type': 'application/json'});
+  private headers = new Headers({
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer ' + this.authenticationService.getToken()
+  });
   private brandsUrl = 'http://localhost:8080/brands';  // URL to web api
 
 
 
-  constructor(private http: Http) { }
+  constructor(private http: Http,
+              private authenticationService: AuthenticationService) { }
 
   getBrands(): Promise<Brand[]> {
-    return this.http.get(this.brandsUrl)
+    return this.http.get(this.brandsUrl,  {headers: this.headers})
                .toPromise()
                .then(response => response.json() as Brand[])
                .catch(this.handleError);
@@ -24,7 +29,7 @@ export class BrandService {
 
    getBrand(id: number): Promise<Brand> {
     const url = `${this.brandsUrl}/${id}`;
-    return this.http.get(url)
+    return this.http.get(url, {headers: this.headers})
       .toPromise()
       .then(response => response.json() as Brand)
       .catch(this.handleError);

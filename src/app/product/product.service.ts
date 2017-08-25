@@ -4,18 +4,22 @@ import {Headers, Http} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import {Product} from './product';
+import {AuthenticationService} from '../login/authentication.service';
 
 @Injectable()
 export class ProductService {
 
-    private headers = new Headers({'Content-Type': 'application/json'});
     private productsUrl = 'http://localhost:8080/products';  // URL to web api
 
-    constructor(private http: Http) {
-    }
+    private headers = new Headers({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.authenticationService.getToken()
+      });
+        constructor(private http: Http,
+                    private authenticationService: AuthenticationService) { }
 
     getProducts(): Promise<Product[]> {
-        return this.http.get(this.productsUrl)
+        return this.http.get(this.productsUrl, {headers: this.headers})
             .toPromise()
             .then(response => response.json() as Product[])
             .catch(this.handleError);
@@ -24,7 +28,7 @@ export class ProductService {
 
     getProduct(id: number): Promise<Product> {
         const url = `${this.productsUrl}/${id}`;
-        return this.http.get(url)
+        return this.http.get(url, {headers: this.headers})
             .toPromise()
             .then(response => response.json() as Product)
             .catch(this.handleError);

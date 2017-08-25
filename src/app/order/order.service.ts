@@ -2,20 +2,24 @@ import {Injectable} from '@angular/core';
 
 import 'rxjs/add/operator/toPromise';
 
-import {Order} from './order';
-import {Http, Headers} from '@angular/http';
+import { Order } from './order';
+import {AuthenticationService} from '../login/authentication.service';
+import {Http,Headers} from '@angular/http';
 
 @Injectable()
 export class OrderService {
-  private headers = new Headers({'Content-Type': 'application/json'});
-  private ordersUrl = 'http://localhost:8080/orders';  // URL to web api // URL to web api
+  private ordersUrl = 'http://localhost:8080/orders';
   private cartUrl = 'http://localhost:8080/cart';  // URL to web api // URL to web api
-
-  constructor(private http: Http) {
-  }
+// URL to web api // URL to web api
+  private headers = new Headers({
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer ' + this.authenticationService.getToken()
+  });
+    constructor(private http: Http,
+                private authenticationService: AuthenticationService) { }
 
   getOrders(): Promise<Order[]> {
-    return this.http.get(this.ordersUrl)
+    return this.http.get(this.ordersUrl, {headers: this.headers})
       .toPromise()
       .then(response => response.json() as Order[])
       .catch(this.handleError);
@@ -23,7 +27,7 @@ export class OrderService {
 
   getOrder(id: number): Promise<Order> {
     const url = `${this.ordersUrl}/${id}`;
-    return this.http.get(url)
+    return this.http.get(url, {headers: this.headers})
       .toPromise()
       .then(response => response.json() as Order)
       .catch(this.handleError);
@@ -31,7 +35,6 @@ export class OrderService {
 
   getOpenOrderForClient(id: number): Promise<Order> {
     const url = `${this.cartUrl}/${id}`;
-    console.log('ajunge aici');
     console.log(url);
     return this.http.get(url)
       .toPromise()
@@ -60,4 +63,3 @@ export class OrderService {
     return Promise.reject(error.message || error);
   }
 }
-
