@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import {Order} from './order';
 import {OrderService} from './order.service';
 import {Product} from "../product/product";
+import {ProductService} from "../product/product.service";
 
 
 @Component({
@@ -16,10 +17,15 @@ export class CartComponent implements OnInit {
   selectedProduct: Product;
 
   constructor(private orderService: OrderService,
+              private productService: ProductService,
               private route: ActivatedRoute,
               private router: Router) {
+    this.getOpenOrder();
+  }
+
+  private getOpenOrder() {
     this.orders = [];
-   orderService.getOpenOrderForClient(1).then(order => this.orders.push(order));
+    this.orderService.getOpenOrderForClient(1).then(order => this.orders.push(order));
   }
 
   ngOnInit(): void {}
@@ -28,7 +34,22 @@ export class CartComponent implements OnInit {
     this.selectedProduct = product;
   }
 
-  gotoDetail(): void {
-    // this.router.navigate(['/productDetail', this.selectedProduct.id]);
+  removeFromCart(product: Product): void {
+    if (this.orders.length >= 1) {
+      this.orders[0].products = this.orders[0].products.filter(p => p.id !== product.id);
+      this.orderService.update(this.orders[0]);
+      this.getOpenOrder();
+      location.reload();
+    }
   }
+
+  emptyCart(): void {
+    if (this.orders.length >= 1) {
+      this.orders[0].products = [];
+      this.orderService.update(this.orders[0]);
+      this.getOpenOrder();
+      location.reload();
+    }
+  }
+
 }
