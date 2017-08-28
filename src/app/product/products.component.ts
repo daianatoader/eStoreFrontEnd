@@ -19,6 +19,7 @@ export class ProductsComponent implements OnInit {
     order:Order;
     orders:Order[];
     user: User;
+    currentUser: User;
 
     constructor(private productService: ProductService,
                 private userService: UserService,
@@ -26,6 +27,8 @@ export class ProductsComponent implements OnInit {
                 private router: Router) {
                     orderService.getOrders().then(o => this.orders = o);
                     userService.getUser(1).then(c=>this.user=c);
+                    this.currentUser = userService.getLoggedInUser();
+
     }
 
     getProducts(): void {

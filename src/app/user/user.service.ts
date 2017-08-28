@@ -15,6 +15,7 @@ export class UserService {
   });
 
     private usersUrl = 'http://localhost:8080/users';  // URL to web api // URL to web api
+    private userUrl = 'http://localhost:8080/user';  // URL to web api // URL to web api
 
     constructor(private http: Http,private authenticationService: AuthenticationService) { }
 
@@ -59,6 +60,19 @@ export class UserService {
     private handleError(error: any): Promise<any> {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
+    }
+
+    getLoggedInUser(): User {
+        var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        var username = currentUser && currentUser.username;
+        var currentUser ;
+      const url = `${this.userUrl}/${username}`;
+      this.http.get(url, {headers: this.headers})
+        .toPromise()
+        .then(response => response.json() as User).then(u => currentUser = u)
+        .catch(this.handleError);
+      console.log("Current user " + currentUser);
+      return currentUser;
     }
 }
 

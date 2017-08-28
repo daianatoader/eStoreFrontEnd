@@ -2,7 +2,7 @@ label {
     display: inline-block;
     width: 7em;
     margin: .5em 0;
-    color: #607D8B;
+    color: #000000;
     font-weight: bold;
 }
 input {
@@ -31,5 +31,5 @@ button:disabled {
     max-width: 300px;
     max-height: 300px;
   }
-  
+
 
